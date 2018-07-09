@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const Uploader = require('../dist/index');
+const args = Array.prototype.slice.call(process.argv);
+const groupID = args[2];
+console.log(`第二个参数是： ${groupID}`);
+
+Uploader.upload(groupID);
