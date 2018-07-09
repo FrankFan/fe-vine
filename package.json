@@ -1,6 +1,6 @@
 {
   "name": "fe-vine",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "oriente hybrid uploader",
   "main": "dist/bundle.js",
   "bin": "bin/cli",
