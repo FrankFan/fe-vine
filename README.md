@@ -14,6 +14,8 @@ $ fe-vine --version
 $ fe-vine --help
 # 上传Android的arr包
 $ fe-vine android
+# 上传iOS的zip包
+$ fe-vine ios
 ```
 
 ## 配置文件
