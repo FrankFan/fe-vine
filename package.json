@@ -1,7 +1,7 @@
 {
-  "name": "oriente-hybrid-uploader",
+  "name": "vine",
   "version": "1.0.0",
-  "description": "",
+  "description": "oriente hybrid uploader",
   "main": "dist/bundle.js",
   "bin": "bin/cli",
   "scripts": {
@@ -11,6 +11,7 @@
   "author": "oriente.com",
   "license": "ISC",
   "dependencies": {
+    "commander": "^2.16.0",
     "exeq": "^3.0.0",
     "webpack": "^4.15.1"
   },
@@ -19,6 +20,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
     "webpack-cli": "^3.0.8"
   }
 }

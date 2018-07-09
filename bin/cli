@@ -1,8 +1,44 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
+const program = require('commander');
+const chalk = require('chalk');
 const Uploader = require('../dist/index');
-const args = Array.prototype.slice.call(process.argv);
-const groupID = args[2];
-console.log(`第二个参数是： ${groupID}`);
+const json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+const version = json.version
 
-Uploader.upload(groupID);
+program
+  .version(version)
+  .usage('<command>')
+
+program
+  .command('android')
+  .description('上传 arr 包到 android 的 maven 仓库')
+  .action( () => {
+    console.log(chalk.black.bgGreen('开始上传arr包...'));
+    Uploader.upload('android');
+  })
+
+program
+  .command('ios')
+  .description('上传 zip 包到 ios 的 pod 仓库')
+  .action(() => {
+    // console.log(chalk.black.bgGreen('开始上传zip包'));
+    console.log(chalk.black.bgGreen('未实现，请稍等...'));
+    console.log('');
+  })
+
+program.on('--help', function(){
+    console.log('');
+    console.log('  Examples:');
+    console.log('');
+    console.log(chalk.green('    $ oriente-hybrid-uploader android'));
+    console.log(chalk.yellow('    $ oriente-hybrid-uploader ios'));
+    console.log('');
+  });
+
+program.parse(process.argv);
+
+if (program.args.length === 0) {
+  program.help()
+}
