@@ -1,5 +1,5 @@
 {
-  "name": "vine",
+  "name": "fe-vine",
   "version": "1.0.0",
   "description": "oriente hybrid uploader",
   "main": "dist/bundle.js",
