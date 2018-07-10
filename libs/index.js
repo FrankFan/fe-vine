@@ -1,6 +1,6 @@
 import exeq from 'exeq';
 import chalk from 'chalk';
-import config from './config';
+import { config } from './config';
 
 const upload = (platform = 'android') => {
   const {

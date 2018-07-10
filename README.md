@@ -22,4 +22,9 @@ $ fe-vine ios
 
 上传时默认读取`fe-vine`项目根目录下的`oriente.config.json`文件。
 
+```bash
+# 查看fe-vine的安装目录
+$ which fe-vine
+```
+
 请修改配置参数后再进行上传操作。

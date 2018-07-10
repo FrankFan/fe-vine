@@ -6,7 +6,8 @@
   "bin": "bin/cli",
   "scripts": {
     "start": "./node_modules/.bin/babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
-    "dev": "bin/cli"
+    "dev": "bin/cli",
+    "prepublish": "rm -rf dist && babel libs --out-dir dist"
   },
   "author": "oriente.com",
   "license": "ISC",

@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
 const program = require('commander');
 const chalk = require('chalk');
 const Uploader = require('../dist/index');
-const json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
-const version = json.version
+const config = require('../dist/config');
 
 program
-  .version(version)
+  .version(config.version)
   .usage('<command>')
 
 program
