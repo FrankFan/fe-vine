@@ -5,7 +5,7 @@
   "main": "dist/bundle.js",
   "bin": "bin/cli",
   "scripts": {
-    "start": "./node_modules/.bin/babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
+    "start": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
     "dev": "bin/cli",
     "prepublish": "rm -rf dist && babel libs --out-dir dist"
   },
@@ -14,7 +14,6 @@
   "dependencies": {
     "commander": "^2.16.0",
     "exeq": "^3.0.0",
-    "webpack": "^4.15.1",
     "chalk": "^2.4.1"
   },
   "devDependencies": {
@@ -22,6 +21,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   }
 }
