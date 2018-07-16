@@ -21,9 +21,8 @@ program
   .command('ios')
   .description('上传 zip 包到 ios 的 pod 仓库')
   .action(() => {
-    // console.log(chalk.black.bgGreen('开始上传zip包'));
-    console.log(chalk.black.bgGreen('未实现，请稍等...'));
-    console.log('');
+    console.log(chalk.black.bgGreen('开始上传zip包'));
+    Uploader.upload('ios');
   })
 
 program.on('--help', function(){

@@ -6,5 +6,6 @@
   "nexusUrl": "http://127.0.0.1:8081/repository/maven-releases/",
   "repositoryId": "releases",
   "userName": "admin",
-  "password": "admin123"
+  "password": "admin123",
+  "feArchivePath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive"
 }

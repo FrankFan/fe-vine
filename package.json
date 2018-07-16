@@ -6,6 +6,7 @@
   "bin": "bin/cli",
   "scripts": {
     "start": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
+    "complie": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map",
     "dev": "bin/cli",
     "prepublish": "rm -rf dist && babel libs --out-dir dist"
   },
@@ -18,10 +19,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8"
+    "babel-preset-env": "^1.7.0"
   }
 }
