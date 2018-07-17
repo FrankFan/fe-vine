@@ -42,7 +42,6 @@ const upload = (platform = 'android') => {
         console.log(chalk.black.bgGreen(`上传失败, error code is: ${JSON.stringify(err.code)}`));
         return Promise.reject(err);
       })
-      console.log(chalk.black.bgGreen('结束...'));
   }
 }
 
