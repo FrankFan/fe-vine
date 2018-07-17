@@ -29,7 +29,7 @@ const upload = (platform = 'android') => {
         return Promise.reject(err);
       })
   } else if (platform.toLowerCase() === 'ios') {
-    const POD_UPLOAD_URL = `orientepodspecpush --specRepo=OrienteSpecs --workspace=${feArchivePath} --noPackage --lint=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'" --push=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'"`;
+    const POD_UPLOAD_URL = `orientepodspecpush --tag=${version} --specRepo=OrienteSpecs --workspace=${feArchivePath} --noPackage --lint=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'" --push=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'"`;
     // iOS
     console.log(POD_UPLOAD_URL);
 

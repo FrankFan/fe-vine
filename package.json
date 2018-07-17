@@ -6,7 +6,7 @@
   "bin": "bin/cli",
   "scripts": {
     "start": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
-    "complie": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map",
+    "compile": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map",
     "dev": "bin/cli",
     "prepublish": "rm -rf dist && babel libs --out-dir dist"
   },
