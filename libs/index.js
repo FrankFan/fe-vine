@@ -7,14 +7,14 @@ const upload = (platform = 'android') => {
     groupId,
     artifactId,
     version,
-    filePath,
+    arrFilePath,
     nexusUrl,
     repositoryId,
     userName,
     password,
     feArchivePath,
   } = config;
-  const MAVEN_COMMAND_URL = `mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=aar -Dfile=${filePath} -Durl=${nexusUrl} -DrepositoryId=${repositoryId} -DuserName=${userName} -Dpassword=${password}`;
+  const MAVEN_COMMAND_URL = `mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=aar -Dfile=${arrFilePath} -Durl=${nexusUrl} -DrepositoryId=${repositoryId} -DuserName=${userName} -Dpassword=${password}`;
 
   if (platform.toLowerCase() === 'android') {
     exeq(MAVEN_COMMAND_URL)
