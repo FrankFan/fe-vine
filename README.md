@@ -28,3 +28,17 @@ $ which fe-vine
 ```
 
 请修改配置参数后再进行上传操作。
+
+
+## 本地开发、调试
+```bash
+# 编译ES6->ES5
+$ npm run compile
+# 执行cli
+$ node bin/cli android
+$ node bin/cli ios
+# 开启watch模式
+$ npm start
+# 调试node程序
+# 在VSCode中猛击F5即可
+```
