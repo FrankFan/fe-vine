@@ -7,7 +7,7 @@
   "scripts": {
     "start": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map --watch",
     "compile": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map",
-    "dev": "bin/cli",
+    "dev": "node bin/cli",
     "prepublish": "rm -rf dist && babel libs --out-dir dist"
   },
   "author": "oriente.com",

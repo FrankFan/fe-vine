@@ -1,11 +1,14 @@
 {
+  "mode": "prod",
   "groupId": "com.cashalo.hybrid",
-  "artifactId": "oriente-hybrid-prod",
-  "version": "1.0.0.10",
+  "artifactId": "oriente-hybrid",
+  "version": "1.1.0.1",
   "arrFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/android-package/oriente-vue.aar",
-  "nexusUrl": "http://127.0.0.1:8081/repository/maven-releases/",
+  "zipFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/ios-package/assets/OrienteVue.zip",
+  "nexusUrl": "http://192.168.11.21/nexus/repository/maven-releases/",
   "repositoryId": "releases",
-  "userName": "admin",
-  "password": "admin123",
-  "feArchivePath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive"
+  "userName": "dev",
+  "password": "dev",
+  "feArchiveRootPath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive/",
+  "feArchiveZipPath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive/OrienteZip/Assets"
 }

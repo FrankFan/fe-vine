@@ -4,20 +4,26 @@ import { config } from './config';
 
 const upload = (platform = 'android') => {
   const {
+    mode,
     groupId,
-    artifactId,
     version,
     arrFilePath,
+    zipFilePath,
     nexusUrl,
     repositoryId,
     userName,
     password,
-    feArchivePath,
+    feArchiveRootPath,
+    feArchiveZipPath,
   } = config;
-  const MAVEN_COMMAND_URL = `mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=aar -Dfile=${arrFilePath} -Durl=${nexusUrl} -DrepositoryId=${repositoryId} -DuserName=${userName} -Dpassword=${password}`;
-
+  let {
+    artifactId,
+  } = config;
+  artifactId = `${artifactId}-${mode}`;
+  const MAVEN_COMMAND = `mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=aar -Dfile=${arrFilePath} -Durl=${nexusUrl} -DrepositoryId=${repositoryId} -DuserName=${userName} -Dpassword=${password}`;
+  console.log(MAVEN_COMMAND);
   if (platform.toLowerCase() === 'android') {
-    exeq(MAVEN_COMMAND_URL)
+    exeq(MAVEN_COMMAND)
       .then(() => {
         console.log(chalk.black.bgGreen('上传成功'));
         return Promise.resolve(true);
@@ -29,11 +35,21 @@ const upload = (platform = 'android') => {
         return Promise.reject(err);
       })
   } else if (platform.toLowerCase() === 'ios') {
-    const POD_UPLOAD_URL = `orientepodspecpush --tag=${version} --specRepo=OrienteSpecs --workspace=${feArchivePath} --noPackage --lint=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'" --push=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'"`;
-    // iOS
-    console.log(POD_UPLOAD_URL);
+    const zipFileName = zipFilePath.split('/').reverse()[0];
+    const zipName = zipFileName.split('.')[0];
+    const zipExtension = zipFileName.split('.')[1];
+    const CP_ZIP_COMMAND = `cp ${zipFilePath} ${feArchiveZipPath}`;
+    const RENAME_ZIP_COMMAND = `mv ${feArchiveZipPath}/${zipFileName} ${feArchiveZipPath}/${zipName}-${version}.${zipExtension}`;
+    const POD_UPLOAD_COMMAND = `orientepodspecpush --tag=${version} --specRepo=OrienteSpecs --workspace=${feArchiveRootPath} --noPackage --lint=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'" --push=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'"`;
 
-    exeq(POD_UPLOAD_URL)
+    exeq(
+      CP_ZIP_COMMAND,
+      RENAME_ZIP_COMMAND,
+      `cd ${feArchiveRootPath}`,
+      `git add .`,
+      `git commit -m 'add zip file'`,
+      POD_UPLOAD_COMMAND,
+    )
       .then(() => {
         console.log(chalk.black.bgGreen('上传成功'));
         return Promise.resolve(true);

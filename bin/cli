@@ -5,6 +5,10 @@ const chalk = require('chalk');
 const Uploader = require('../dist/index');
 const config = require('../dist/config');
 
+if (process.argv[2] && process.argv[2] === '-v') {
+  process.argv[2] = '-V'
+}
+
 program
   .version(config.version)
   .usage('<command>')
