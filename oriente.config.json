@@ -2,7 +2,7 @@
   "mode": "prod",
   "groupId": "com.cashalo.hybrid",
   "artifactId": "oriente-hybrid",
-  "version": "1.2.1.1",
+  "version": "1.2.1.2",
   "arrFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/android-package/oriente-vue.aar",
   "zipFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/ios-package/assets/OrienteVue.zip",
   "nexusUrl": "http://192.168.11.21/nexus/repository/maven-releases/",
