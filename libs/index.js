@@ -36,14 +36,13 @@ const upload = (platform = 'android') => {
   } else if (platform.toLowerCase() === 'ios') {
     const jsonFilePath = zipFilePath.replace('.zip', '.json');
     const CP_ZIP_COMMAND = `cp ${zipFilePath} ${jsonFilePath} ${feArchiveZipPath}`;
-    const CP_JSON_COMMAND = `cp ${jsonFilePath} ${feArchiveZipPath}`;
     const POD_UPLOAD_COMMAND = `orientepodspecpush --tag=${version} --specRepo=OrienteSpecs --workspace=${feArchiveRootPath} --noPackage --lint=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'" --push=" --allow-warnings --sources='ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/ios-OrienteSpecs,https://github.com/CocoaPods/Specs.git'"`;
 
     exeq(
       CP_ZIP_COMMAND,
       `cd ${feArchiveRootPath}`,
       `git add .`,
-      `git commit -m 'add zip&json file'`,
+      `git commit -m 'add zip&json file version: ${version}'`,
       POD_UPLOAD_COMMAND,
     )
       .then(() => {
