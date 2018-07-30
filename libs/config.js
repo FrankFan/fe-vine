@@ -9,14 +9,9 @@ import path from 'path';
  * 3.仍然没有的话，提示错误
  */
 let filePath = path.resolve(process.cwd(), 'fe-vine.config.json');
-console.log(`filePath = ${filePath}`);
-console.log(`__dirname = ${__dirname}`);
-console.log(`__filename = ${__filename}`);
-console.log(`process.cwd() = ${process.cwd()}`);
 let json;
 try {
   json = fs.readFileSync(filePath);
-  console.log(`json = ${json}`);
 } catch (error) {
   console.log(`no local config found, use global config file:  homedir = ${homedir()}`);
   try {

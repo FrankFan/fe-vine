@@ -1,14 +1,17 @@
 {
-  "mode": "prod",
-  "groupId": "com.cashalo.hybrid",
-  "artifactId": "oriente-hybrid",
-  "version": "1.2.1.2",
-  "arrFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/android-package/oriente-vue.aar",
-  "zipFilePath": "/Users/khanfan/workspace/oriente/fe-ph-cashalo/ios-package/assets/OrienteVue.zip",
-  "nexusUrl": "http://192.168.11.21/nexus/repository/maven-releases/",
-  "repositoryId": "releases",
-  "userName": "dev",
-  "password": "dev",
-  "feArchiveRootPath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive/",
-  "feArchiveZipPath": "/Users/khanfan/workspace/oriente/fe-cashalo-h5-archive/OrienteZip/Assets"
+  "version": "1.9.9.0",
+  "android": {
+    "mode": "prod",
+    "arrFilePath": "./android-package/oriente-vue.aar",
+    "groupId": "com.cashalo.hybrid",
+    "artifactId": "oriente-hybrid",
+    "nexusUrl": "http://192.168.11.21/nexus/repository/maven-releases/",
+    "repositoryId": "releases",
+    "userName": "dev",
+    "password": "dev"
+  },
+  "ios": {
+    "zipFileRelativePath": "./ios-package/assets/OrienteVue.zip",
+    "h5ArchiveRemoteRepo": "ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/fe-cashalo-h5-archive"
+  }
 }
