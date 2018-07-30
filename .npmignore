@@ -3,3 +3,5 @@ libs/
 .DS_Store
 .log
 node_modules
+android-package
+ios-package
