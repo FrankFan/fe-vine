@@ -5,7 +5,7 @@
     "arrFilePath": "./android-package/oriente-vue.aar",
     "groupId": "com.cashalo.hybrid",
     "artifactId": "oriente-hybrid",
-    "nexusUrl": "http://192.168.11.21/nexus/repository/maven-releases/",
+    "nexusUrl": "http://180.167.112.162:8082/repository/maven-releases/",
     "repositoryId": "releases",
     "userName": "dev",
     "password": "dev"

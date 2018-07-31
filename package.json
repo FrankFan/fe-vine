@@ -9,7 +9,7 @@
     "compile": "babel libs --out-dir dist --source-maps cheap-module-eval-source-map",
     "dev": "node bin/cli",
     "prepublish": "rm -rf dist && babel libs --out-dir dist",
-    "postinstall": "cp fe-vine.config.json ~/fe-vine.config.json && mv ~/fe-vine.config.json ~/.fe-vine.config.json"
+    "postinstall": "cp fe-vine.config.json ~/.fe-vine.config.json"
   },
   "author": "oriente.com",
   "license": "ISC",
