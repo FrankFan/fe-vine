@@ -45,7 +45,6 @@ const upload = (platform = 'android') => {
     const h5ArchiveName = h5ArchiveRemoteRepo.split('/').reverse()[0];
     const h5ArchiveRepoRoot = path.resolve(`/tmp/${h5ArchiveName}`);
     if (existsSync(h5ArchiveRepoRoot)) {
-      console.log('已存在');
       const {
         cpZipCommand,
         podUploadCommand,
@@ -59,7 +58,6 @@ const upload = (platform = 'android') => {
           iosUpload(version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand);
         })
     } else {
-      console.log('不存在');
       exeq([
         `git clone ${h5ArchiveRemoteRepo} /tmp/${h5ArchiveName}`,
       ])
@@ -85,7 +83,7 @@ const makeParams = (h5ArchiveRepoRoot, zipFileRelativePath, version) => {
   const zipFileFullPath = path.resolve(process.cwd(), zipFileRelativePath);
   const jsonFileFullPath = zipFileFullPath.replace('.zip', '.json');
   const cpZipCommand = `cp ${zipFileFullPath} ${jsonFileFullPath} ${h5ArchiveRepoRoot}/OrienteZip/Assets`;
-  const podUploadCommand = `orientepodspecpush --tag=${version} --workspace=${h5ArchiveRepoRoot}`;
+  const podUploadCommand = `orientepodspecpush --tag=${version} --workspace=${h5ArchiveRepoRoot} --noPackage`;
   return {
     cpZipCommand,
     podUploadCommand,
@@ -102,11 +100,9 @@ const iosUpload = (version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand) =
   )
     .then(() => {
       console.log(chalk.black.bgGreen('上传成功'));
-      return Promise.resolve(true);
     })
     .catch(err => {
       console.log(chalk.black.bgGreen(`上传失败, error code is: ${JSON.stringify(err.code)}`));
-      return Promise.reject(err);
     })
 }
 
