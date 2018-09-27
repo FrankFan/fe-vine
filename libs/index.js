@@ -31,14 +31,12 @@ const upload = (platform = 'android') => {
   if (platform.toLowerCase() === 'android') {
     exeq(MAVEN_COMMAND)
       .then(() => {
-        console.log(chalk.black.bgGreen('上传成功'));
-        return Promise.resolve(true);
+        console.log(chalk.black.bgGreen(`上传成功: ${version}`));
       })
       .catch(err => {
         console.log(chalk.black.bgGreen(`上传失败, error code is: ${JSON.stringify(err.code)}`));
         console.log(chalk.yellow('请确保升级了 oriente.config.json.version 字段'));
-        return Promise.reject(err);
-      })
+      });
   } else if (platform.toLowerCase() === 'ios') {
     // 1. clone h5-archive 项目到 /tmp 目录
     // 2. 拿到 h5-archive-root-path 和 h5-archive-asset-path
@@ -57,26 +55,33 @@ const upload = (platform = 'android') => {
         .then(() => {
           iosUpload(version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand);
         })
+        .catch(() => {
+          iosUploadWhenNotExist();
+        });
     } else {
-      exeq([
-        `git clone ${h5ArchiveRemoteRepo} /tmp/${h5ArchiveName}`,
-      ])
-        .then(() => {
-          const {
-            cpZipCommand,
-            podUploadCommand,
-          } = makeParams(h5ArchiveRepoRoot, zipFileRelativePath, version);
-          exeq([
-            `cd ${h5ArchiveRepoRoot}`,
-            'git checkout .',
-            'git pull --rebase',
-          ])
-            .then(() => {
-              iosUpload(version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand);
-            })
-        })
+      iosUploadWhenNotExist();
     }
   }
+}
+
+const iosUploadWhenNotExist = () => {
+  exeq([
+    `git clone ${h5ArchiveRemoteRepo} /tmp/${h5ArchiveName}`,
+  ])
+    .then(() => {
+      const {
+        cpZipCommand,
+        podUploadCommand,
+      } = makeParams(h5ArchiveRepoRoot, zipFileRelativePath, version);
+      exeq([
+        `cd ${h5ArchiveRepoRoot}`,
+        'git checkout .',
+        'git pull --rebase',
+      ])
+        .then(() => {
+          iosUpload(version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand);
+        })
+    });
 }
 
 const makeParams = (h5ArchiveRepoRoot, zipFileRelativePath, version) => {
@@ -99,7 +104,7 @@ const iosUpload = (version, cpZipCommand, h5ArchiveRepoRoot, podUploadCommand) =
     podUploadCommand,
   )
     .then(() => {
-      console.log(chalk.black.bgGreen('上传成功'));
+      console.log(chalk.black.bgGreen(`上传成功: ${version}`));
     })
     .catch(err => {
       console.log(chalk.black.bgGreen(`上传失败, error code is: ${JSON.stringify(err.code)}`));

@@ -3,6 +3,8 @@ FE-VINE
 
 fe-vine, 一个用来上传hybrid打包产物的命令行工具。
 
+![](https://ws2.sinaimg.cn/large/006tNc79gy1fte11nzb66j30d209o74q.jpg)
+
 ## 用法
 
 ```bash

@@ -1,14 +1,14 @@
 {
-  "version": "1.9.9.0",
+  "version": "1.0.0.0",
   "android": {
     "mode": "prod",
     "arrFilePath": "./android-package/oriente-vue.aar",
     "groupId": "com.cashalo.hybrid",
     "artifactId": "oriente-hybrid",
-    "nexusUrl": "http://180.167.112.162:8082/repository/maven-releases/",
+    "nexusUrl": "http://180.180.180.180:180/repository/maven-releases/",
     "repositoryId": "releases",
-    "userName": "dev",
-    "password": "dev"
+    "userName": "test",
+    "password": "test"
   },
   "ios": {
     "zipFileRelativePath": "./ios-package/assets/OrienteVue.zip",
